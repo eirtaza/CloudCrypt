@@ -32,6 +32,7 @@ def make(pwd):
         if hashFileValue == password:
             print "Correct Password"
             return key
+
         else:
             print "Mismatched Password"
             return None
@@ -46,13 +47,13 @@ def make(pwd):
 
         if os.path.exists(dest + "/hash") is False:
             remote_file = open(dest + "/hash","w")
-            remote_file.write(password)
+            remote_file.write(password[:5])
             remote_file.close()
 
         f = open(dest + "/hash", 'r')
         remote = f.read()
 
-        if remote == password:
+        if remote == password[:5]:
             output_file = open("hash","w")
             output_file.write(password)
             output_file.close()
